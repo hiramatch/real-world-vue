@@ -19,3 +19,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+.prettierrc.js
+.eslintrc.js
+.eslintrc.js
+.eslintrc.js
+.gitignore
