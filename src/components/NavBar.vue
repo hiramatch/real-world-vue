@@ -10,7 +10,7 @@
 <script>
 export default {}
 </script>
-    <style scoped>
+<style scoped>
 .nav {
   display: flex;
   justify-content: space-between;
