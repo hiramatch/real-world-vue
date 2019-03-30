@@ -1,12 +1,9 @@
 <template>
   <div>
-    <p>BaseButton</p>
+    <button><slot></slot></button>
   </div>
 </template>
 
 <script>
 export default {}
 </script>
-
-<style scoped>
-</style>
