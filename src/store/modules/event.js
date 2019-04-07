@@ -25,9 +25,14 @@ export default {
     createEvent({ commit, dispatch, rootState }, event) {
       return EventService.postEvent(event).then(() => {
         commit('ADD_EVENT', event)
+        const notification = {
+          type: 'success',
+          message: 'Your event has been created!'
+        }
+        dispatch('notification/add', notification, { root: true })
       })
     },
-    fetchEvents({ commit }, { perPage, page }) {
+    fetchEvents({ commit, dispatch }, { perPage, page }) {
       EventService.getEvents(perPage, page)
         .then(response => {
           commit(
@@ -37,10 +42,14 @@ export default {
           commit('SET_EVENTS', response.data)
         })
         .catch(error => {
-          console.log('There was an error:', error.response)
+          const notification = {
+            type: 'error',
+            message: 'There was a problem fetching events: ' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
         })
     },
-    fetchEvent({ commit, getters }, id) {
+    fetchEvent({ commit, dispatch, getters }, id) {
       var event = getters.getEventById(id)
       if (event) {
         commit('SET_EVENT', event)
@@ -50,7 +59,13 @@ export default {
             commit('SET_EVENT', response.data)
           })
           .catch(error => {
-            console.log('There was an error:', error.response)
+            const notification = {
+              type: 'error',
+              message: 'There was a problem fetching an event: ' + error.message
+            }
+            dispatch('notification/add', notification, {
+              root: true
+            })
           })
       }
     }
