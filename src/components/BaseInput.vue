@@ -4,12 +4,13 @@
     <input 
      :value="value"
      @input="updateValue"
-     type="text">
+     v-bind="$attrs">
   </div>
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     value: [String, Number],
     label: String
