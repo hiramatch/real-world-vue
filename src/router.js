@@ -5,6 +5,7 @@ import EventList from './views/EventList.vue'
 import EventShow from './views/EventShow.vue'
 import NProgress from 'nprogress'
 import store from '@/store/store'
+import NotFound from '@/views/NotFound.vue'
 
 Vue.use(Router)
 
@@ -33,6 +34,15 @@ const router = new Router({
           next()
         })
       }
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound,
+    },
+    { // Here's the new catch all route
+      path: '*',
+      redirect: { name: '404' }
     }
   ]
 })
