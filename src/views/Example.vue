@@ -1,5 +1,6 @@
 <template>
   <div>
+    <form @submit.prevent="submit">
     <input 
       type="email"
       placeholder="What's your email"
@@ -17,6 +18,7 @@
     </div>
     <button type="submit" :disabled="$v.$invalid">Submit</button>
      <p v-if="$v.$anyError" class="errorMessage">Please fill out the required field(s).</p>
+    </form>
   </div>
 </template>
 
@@ -27,6 +29,14 @@ export default {
   data() {
     return {
       email: null
+    }
+  },
+  methods: {
+    submit() {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        console.log('Form Submission:', this.email)
+      }
     }
   },
   validations: {
