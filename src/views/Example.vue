@@ -1,6 +1,15 @@
 <template>
   <div>
-    <input type="email" placeholder="What's your email" v-model="email"/>
+    <input 
+      type="email"
+      placeholder="What's your email"
+      v-model.trim="email"
+      @blur="$v.email.$touch()"
+    />
+    <div v-if="$v.email.$error">
+      <p class="errorMessage" v-if="!$v.email.email">Please enter a valid email address.</p>
+      <p class="errorMessage" v-if="!$v.email.required">Email is required.</p>
+    </div>
     <button type="submit">Submit</button>
   </div>
 </template>
