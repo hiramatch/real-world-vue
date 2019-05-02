@@ -6,10 +6,13 @@ import router from './router'
 import store from './store/store'
 import BaseIcon from '@/components/BaseIcon'
 import 'nprogress/nprogress.css'
+import Vuelidate from 'vuelidate'
 
 Vue.component('BaseIcon', BaseIcon)
 
 Vue.config.productionTip = false
+
+Vue.use(Vuelidate)
 
 const requireComponent = require.context(
   './components',
