@@ -3,6 +3,7 @@
     <label v-if="label">{{ label }}</label>
     <select 
      :value="value"
+     v-on="$listeners"
      @change="updateValue"
      v-bind="$attrs">
        <option v-for="option in options"

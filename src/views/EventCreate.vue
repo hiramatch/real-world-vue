@@ -6,8 +6,13 @@
         label="Select a category"
         v-model="event.categories"
         :options="categories"
-        class="field"
+        :class="{ error: $v.event.category.$error}"
+        @blur="$v.event.category.$touch()"
       />
+      <template v-if="$v.event.category.$error">
+      <p v-if="!$v.event.category.required" class="errorMessage">Category is required.</p>
+     </template>
+
       <h3>Name & describe your event</h3>
       <BaseInput
         label="Title"
@@ -55,7 +60,8 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker'
-import NProgress from 'nprogress' 
+import NProgress from 'nprogress'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   components: {
@@ -104,6 +110,16 @@ export default {
         time: '',
         attendees: []
       }
+    }
+  },
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      description: { required },
+      location: { required },
+      date: { required },
+      time: { required }
     }
   }
 }
