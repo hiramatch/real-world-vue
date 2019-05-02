@@ -6,6 +6,7 @@
         label="Select a category"
         v-model="event.categories"
         :options="categories"
+        class="field"
       />
       <h3>Name & describe your event</h3>
       <BaseInput
@@ -13,6 +14,7 @@
         v-model="event.title"
         type="text"
         placeholder="Add an event title"
+        class="field"
       />
 
       <BaseInput
@@ -20,6 +22,7 @@
         v-model="event.description"
         type="text"
         placeholder="Add a description"
+        class="field"
       />
 
       <h3>Where is your event?</h3>
@@ -28,6 +31,7 @@
         v-model="event.location"
         type="text"
         placeholder="Add a location"
+        class="field"
       />
 
       <h3>When is your event?</h3>
@@ -41,9 +45,9 @@
         label="Select a time"
         v-model="event.time"
         :options="times"
+        class="field"
       />
-
-      <input type="submit" class="button -fill-gradient" value="Submit"/>
+      <BaseButton type="submit">Submit</BaseButton>
     </form>
   </div>
 </template>
