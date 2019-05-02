@@ -1,11 +1,18 @@
 <template>
   <div>
-    <button v-on="$listeners" class="button"><slot/></button>
+    <button v-on="$listeners" v-bind="$attrs" class="button" :class="buttonClass"><slot/></button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    inheritAttrs: false,
+    buttonClass: {
+      type: String
+    }
+  }
+}
 </script>
 
 <style scoped>

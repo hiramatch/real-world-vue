@@ -47,7 +47,7 @@
         :options="times"
         class="field"
       />
-      <BaseButton type="submit">Submit</BaseButton>
+      <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
     </form>
   </div>
 </template>
