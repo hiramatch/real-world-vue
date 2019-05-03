@@ -31,8 +31,12 @@
         v-model="event.description"
         type="text"
         placeholder="Add a description"
-        class="field"
+        :class="{ error: $v.event.description.$error}"
+        @blur="$v.event.description.$touch()"
       />
+      <template v-if="$v.event.description.$error">
+      <p v-if="!$v.event.description.required" class="errorMessage">Description is required.</p>
+     </template>
 
       <h3>Where is your event?</h3>
       <BaseInput
@@ -40,8 +44,12 @@
         v-model="event.location"
         type="text"
         placeholder="Add a location"
-        class="field"
+        :class="{ error: $v.event.location.$error}"
+        @blur="$v.event.location.$touch()"
       />
+      <template v-if="$v.event.location.$error">
+      <p v-if="!$v.event.location.required" class="errorMessage">Location is required.</p>
+     </template>
 
       <h3>When is your event?</h3>
 
