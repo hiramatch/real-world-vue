@@ -19,7 +19,8 @@
         v-model="event.title"
         type="text"
         placeholder="Add an event title"
-        class="field"
+        :class="{ error: $v.event.title.$error}"
+        @blur="$v.event.title.$touch()"
       />
 
       <BaseInput
