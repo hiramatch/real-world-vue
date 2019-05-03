@@ -4,7 +4,7 @@
     <form @submit.prevent="createEvent">
       <BaseSelect
         label="Select a category"
-        v-model="event.categories"
+        v-model="event.category"
         :options="categories"
         :class="{ error: $v.event.category.$error}"
         @blur="$v.event.category.$touch()"
