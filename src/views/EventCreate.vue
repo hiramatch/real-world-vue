@@ -22,6 +22,9 @@
         :class="{ error: $v.event.title.$error}"
         @blur="$v.event.title.$touch()"
       />
+      <template v-if="$v.event.title.$error">
+      <p v-if="!$v.event.title.required" class="errorMessage">Title is required.</p>
+     </template>
 
       <BaseInput
         label="Description"
