@@ -17,25 +17,15 @@
 </template>
 
 <script>
+import { formFieldMixin } from '../mixins/formFieldMixin'
 export default {
-  inheritAttrs: false,
+  mixins: [formFieldMixin],
   props: {
     options: {
       type: Array,
       required: true
     },
-    value: [String, Number],
-    label: String
-  },
-  methods: {
-    updateValue(event) {
-      // inputイベントを発火
-      // 理由：親コンポーネントにてinputイベントをキャッチさせるため
-      // 背景：親コンポーネントではv-modelプロパティを定義
-      //      v-modelを定義すること=v-bind:valueと@inputを定義になる
-      //      そのためこのコンポーネント内でinputイベントを発火させる必要がある
-      this.$emit('input', event.target.value)
-    }
-  },
+    value: [String, Number]
+  }
 }
 </script>
